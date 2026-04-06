@@ -16,7 +16,7 @@ export default function Weather(props) {
             date: new Date(response.data.dt * 1000),
             wind: response.data.wind.speed, 
             description: response.data.weather[0].description,
-            iconUrl: `https://ssl.gstatic.com/onebox/weather/64/${response.data.weather[0].icon}.png`,
+            icon: response.data.weather[0].icon,
             city: response.data.name,
     });
 }
@@ -32,8 +32,8 @@ function handleCityChange(event) {
 }
 
 function search() {
-    const apiKey = "35f4a664892ct08f69ca41oe92eb5099";   
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&appid=${apiKey}&units=metric`;
+    let apiKey = "35f4a664892ct08f69ca41oe92eb5099";   
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
 }
