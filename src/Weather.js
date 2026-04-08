@@ -39,7 +39,6 @@ function search() {
 
 }
 
-
     if (weatherData.ready) {
         return (
         <div className="Weather">
