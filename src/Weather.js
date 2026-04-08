@@ -12,17 +12,17 @@ export default function Weather(props) {
         const data = response.data;
         setWeatherData({
             ready: true,
-            temperature: data.main.temp,
-            humidity: data.main.humidity,
-            date: new Date(data.dt * 1000),
-            wind: data.wind.speed, 
-            description: data.weather[0].description,
-            icon: data.weather[0].icon,
-            city: data.name,
-    });
-}
+            temperature: data.temperature.current,
+            humidity: data.temperature.humidity,
+            date: new Date(data.time * 1000),
+            wind: data.wind.speed,
+            description: data.condition.description,
+            icon: data.condition.icon,
+            city: data.city,
+        });
+    }
 
-function handleSubmit(event) {
+    function handleSubmit(event) {
     event.preventDefault();
     search();
     
@@ -69,5 +69,3 @@ function search() {
         return "Loading...";
     }
 }
-    
-    
