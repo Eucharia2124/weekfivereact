@@ -5,7 +5,9 @@
     padding: 16px;
     margin: 30px auto;
     border-radius: 4px;
-    
+    display: flex;
+    flex-direction: column;
+   
 }
 .Weather h1 {
     font-size: 24px;
