@@ -20,6 +20,20 @@ export default function WeatherForecast(props) {
     setForecast(response.data.daily);
     setLoaded(true);
   }
+  
+  function load() {
+    let apiKey = "35f4a664892ct08f69ca41oe92eb5099";
+    let longitude = props.coordinates.longitude;
+    let latitude = props.coordinates.latitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+
+    axios
+      .get(apiUrl)
+      .then(handleResponse)
+      .catch((error) => {
+        console.error("Error fetching weather data:", error);
+      });
+  }
 
   if (loaded) {
     console.log(forecast);
@@ -40,17 +54,7 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    let apiKey = "35f4a664892ct08f69ca41oe92eb5099";
-    let longitude = props.coordinates.longitude;
-    let latitude = props.coordinates.latitude;
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
-
-    axios
-      .get(apiUrl)
-      .then(handleResponse)
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
+    load();
     return null;
   }
 }

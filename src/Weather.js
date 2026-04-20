@@ -23,13 +23,12 @@ export default function Weather(props) {
             city: data.city,
         });
     }
-
+    
     function handleSubmit(event) {
     event.preventDefault();
     search();
     
 }
-
 function handleCityChange(event) {
     setCity(event.target.value);
 }
